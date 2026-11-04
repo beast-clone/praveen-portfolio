@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Praveen L | AI & Automation Specialist</title>
+<meta name="description" content="Praveen L builds marketing automations, WhatsApp and CRM flows, and landing pages with n8n and Claude Code. Based in Bengaluru.">
+<meta property="og:title" content="Praveen L | AI & Automation Specialist">
+<meta property="og:description" content="Lead routing, WhatsApp and CRM automation, and landing pages. 200+ n8n workflows built, 98 running daily.">
+<meta property="og:image" content="assets/medical-pg.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+  :root {
+    --bg: #f7f8f7;
+    --surface: #ffffff;
+    --surface-2: #eef1ef;
+    --ink: #121614;
+    --ink-2: #47504b;
+    --ink-3: #6a736e;
+    --line: #dfe4e1;
+    --accent: #0a7d5d;
+    --accent-2: #0fae81;
+    --accent-soft: #dff3eb;
+    --accent-ink: #ffffff;
+    --shadow-sm: 0 1px 2px rgb(18 40 30 / .06);
+    --shadow: 0 1px 2px rgb(18 40 30 / .05), 0 18px 40px -12px rgb(18 40 30 / .16);
+    --r: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "Geist", system-ui, sans-serif; font-size: 16px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+  section { position: relative; }
+  h2 { font-size: clamp(30px, 3.8vw, 48px); line-height: 1.06; letter-spacing: -0.035em; font-weight: 650; }
+  .lead { color: var(--ink-2); font-size: 18px; max-width: 58ch; margin-top: 16px; }
+  .mono { font-family: "Geist Mono", ui-monospace, monospace; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+    padding: 13px 22px; border-radius: 999px; font-weight: 500; font-size: 15px;
+    text-decoration: none; border: 1px solid transparent; cursor: pointer;
+    transition: transform .25s cubic-bezier(.16,1,.3,1), background .2s, border-color .2s, box-shadow .25s;
+  }
+  .btn:active { transform: translateY(1px) scale(.98); }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-primary:hover { box-shadow: 0 10px 24px -8px rgb(18 22 20 / .5); transform: translateY(-1px); }
+  .btn-ghost { border-color: var(--line); background: var(--surface); }
+  .btn-ghost:hover { border-color: var(--ink-3); }
+
+  /* NAV */
+  header {
+    position: fixed; inset: 0 0 auto 0; z-index: 30;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent; transition: border-color .3s;
+  }
+  header.scrolled { border-color: var(--line); }
+  .nav { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; letter-spacing: -.01em; }
+  .mark { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; background: var(--ink); color: #fff; font-size: 13px; font-weight: 600; }
+  .nav-links { display: flex; gap: 30px; list-style: none; font-size: 15px; color: var(--ink-2); }
+  .nav-links a { text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav .btn { padding: 9px 16px; font-size: 14px; }
+
+  /* HERO */
+  .hero { min-height: 100dvh; display: flex; align-items: center; padding: 108px 0 64px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500;
+    color: var(--accent); background: var(--accent-soft); padding: 6px 12px; border-radius: 999px;
+  }
+  .live { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 0 rgb(15 174 129 / .6); animation: ping 1.8s infinite; }
+  @keyframes ping { 70% { box-shadow: 0 0 0 7px rgb(15 174 129 / 0); } 100% { box-shadow: 0 0 0 0 rgb(15 174 129 / 0); } }
+  .hero h1 { font-size: clamp(42px, 5.6vw, 76px); line-height: .98; letter-spacing: -0.045em; font-weight: 680; margin-top: 22px; }
+  .hero h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .06em; }
+  .hero h1 .w > span { display: inline-block; }
+  .hero h1 .hl { color: var(--accent); }
+  .hero p.sub { color: var(--ink-2); font-size: 19px; max-width: 42ch; margin-top: 24px; }
+  .hero-cta { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+
+  /* hero pipeline */
+  .pipe { position: relative; aspect-ratio: 600 / 470; width: 100%; }
+  .pipe svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .pipe .wire { fill: none; stroke: var(--line); stroke-width: 2; }
+  .pipe .dot { fill: var(--accent-2); }
+  .pipe .node {
+    position: absolute; transform: translate(-50%, -50%);
+    display: flex; align-items: center; gap: 8px; white-space: nowrap;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 9px 12px; font-size: 13px; font-weight: 500; box-shadow: var(--shadow-sm);
+  }
+  .pipe .node i { font-size: 17px; color: var(--accent); }
+  .pipe .node.big { padding: 14px 16px; border-radius: 14px; font-size: 14px; box-shadow: var(--shadow); }
+  .pipe .node.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .pipe .node.dark i { color: #6ee7bf; }
+  .pipe .node.person { padding: 7px 12px 7px 7px; }
+  .avatar { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 600; color: #fff; }
+  .pipe .ticker {
+    position: absolute; left: 50%; bottom: -4px; transform: translateX(-50%);
+    font-size: 13px; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line);
+    border-radius: 999px; padding: 7px 14px; display: flex; gap: 8px; align-items: center; box-shadow: var(--shadow-sm);
+    white-space: nowrap;
+  }
+  .pipe .ticker b { color: var(--ink); font-weight: 600; }
+  .node.flash { animation: flash .9s ease; }
+  @keyframes flash { 30% { border-color: var(--accent-2); box-shadow: 0 0 0 4px rgb(15 174 129 / .18); } }
+
+  /* STATS */
+  .stats { padding: 8px 0 120px; }
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
+  .stat { padding: 30px 24px 0 0; }
+  .stat + .stat { padding-left: 24px; border-left: 1px solid var(--line); }
+  .stat b { display: block; font-size: clamp(34px, 4vw, 52px); letter-spacing: -0.04em; font-weight: 650; line-height: 1; }
+  .stat span { display: block; color: var(--ink-3); font-size: 14px; margin-top: 10px; max-width: 22ch; }
+
+  /* CASE 1: n8n canvas */
+  .case { padding: 40px 0 120px; }
+  .case-head { max-width: 760px; }
+  .case-tag { font-size: 14px; color: var(--accent); font-weight: 600; display: flex; gap: 8px; align-items: center; }
+  .case-head h2 { margin-top: 12px; }
+  .story { display: grid; grid-template-columns: 340px 1fr; gap: 48px; margin-top: 48px; align-items: center; }
+  .steps { display: grid; gap: 10px; }
+  .step { padding: 16px 18px; border-radius: 12px; border: 1px solid transparent; transition: background .4s, border-color .4s, opacity .4s; opacity: .45; }
+  .step.on { opacity: 1; background: var(--surface); border-color: var(--line); box-shadow: var(--shadow-sm); }
+  .step h3 { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+  .step p { font-size: 14px; color: var(--ink-2); margin-top: 4px; }
+
+  .canvas {
+    position: relative; border-radius: 18px; border: 1px solid var(--line);
+    background-color: var(--surface);
+    background-image: radial-gradient(circle, #d3dbd6 1px, transparent 1.2px);
+    background-size: 22px 22px; padding: 30px 26px 26px; box-shadow: var(--shadow);
+  }
+  .canvas-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; font-size: 13px; color: var(--ink-3); }
+  .canvas-bar b { color: var(--ink); font-weight: 600; font-size: 14px; }
+  .pill-live { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 4px 10px; font-weight: 500; font-size: 12px; }
+  .flow-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 26px; position: relative; }
+  .flow-row + .flow-row { margin-top: 44px; }
+  .flow-row.rev { direction: rtl; }
+  .flow-row.rev > * { direction: ltr; }
+  .n8n {
+    position: relative; background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px;
+    padding: 12px 10px 10px; text-align: center; transition: border-color .35s, box-shadow .35s, transform .35s;
+  }
+  .n8n .ic { width: 38px; height: 38px; margin: 0 auto 8px; border-radius: 10px; display: grid; place-items: center; font-size: 20px; background: var(--surface-2); color: var(--ink-2); transition: background .35s, color .35s; }
+  .n8n .nm { font-size: 12px; font-weight: 500; line-height: 1.3; }
+  .n8n .ty { font-size: 10.5px; color: var(--ink-3); margin-top: 2px; }
+  .n8n::after {
+    content: ""; position: absolute; top: 50%; right: -27px; width: 26px; height: 2px;
+    background: linear-gradient(90deg, var(--accent-2) var(--fill, 0%), var(--line) var(--fill, 0%));
+  }
+  .flow-row.rev .n8n::after { right: auto; left: -27px; background: linear-gradient(270deg, var(--accent-2) var(--fill, 0%), var(--line) var(--fill, 0%)); }
+  .flow-row .n8n:last-child::after { display: none; }
+  .n8n.on { border-color: var(--accent-2); box-shadow: 0 0 0 4px rgb(15 174 129 / .12); }
+  .n8n.on .ic { background: var(--accent); color: #fff; }
+  .n8n.on::after { --fill: 100%; }
+  .turn { position: absolute; right: calc(10% - 1px); top: 100%; width: 2px; height: 44px; background: var(--line); }
+  .turn.on { background: var(--accent-2); }
+  .canvas .branch-label { font-size: 12px; color: var(--ink-3); margin: 34px 0 12px; display: flex; align-items: center; gap: 8px; }
+  .canvas .branch-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .canvas-foot { margin-top: 22px; display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); }
+  .canvas-foot span { display: inline-flex; gap: 6px; align-items: center; }
+  .canvas-foot i { color: var(--accent); }
+
+  /* CASE 2: eBook phone */
+  .ebook { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 120px 0; }
+  .ebook-grid { display: grid; grid-template-columns: 1fr 340px 1fr; gap: 56px; align-items: center; margin-top: 56px; }
+  .chain { list-style: none; display: grid; gap: 14px; }
+  .chain li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; opacity: .4; transition: opacity .5s; }
+  .chain li.on { opacity: 1; }
+  .chain i { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; font-size: 20px; background: var(--surface-2); color: var(--ink-2); transition: background .4s, color .4s; }
+  .chain li.on i { background: var(--accent); color: #fff; }
+  .chain h3 { font-size: 15px; font-weight: 600; }
+  .chain p { font-size: 13.5px; color: var(--ink-2); }
+  .phone {
+    width: 320px; height: 620px; margin: 0 auto; border-radius: 46px; padding: 12px;
+    background: #101412; box-shadow: 0 40px 80px -30px rgb(10 30 20 / .45), inset 0 0 0 2px #2a312d;
+  }
+  .screen { width: 100%; height: 100%; border-radius: 36px; overflow: hidden; background: #ece5dd; display: flex; flex-direction: column; }
+  .wa-top { background: #0b6b55; color: #fff; padding: 38px 16px 12px; display: flex; align-items: center; gap: 10px; }
+  .wa-top .avatar { width: 34px; height: 34px; background: #fff; color: #0b6b55; font-size: 12px; }
+  .wa-top b { font-size: 14px; display: block; line-height: 1.2; }
+  .wa-top small { font-size: 11px; opacity: .8; }
+  .wa-body { flex: 1; padding: 16px 12px; display: flex; flex-direction: column; gap: 10px; justify-content: flex-end; }
+  .msg { max-width: 86%; background: #fff; border-radius: 4px 12px 12px 12px; padding: 9px 11px; font-size: 13px; line-height: 1.45; color: #1b1f1d; box-shadow: 0 1px 1px rgb(0 0 0 / .08); opacity: 0; transform: translateY(14px) scale(.98); transition: opacity .5s, transform .5s cubic-bezier(.16,1,.3,1); }
+  .msg.in { opacity: 1; transform: none; }
+  .msg .t { display: block; text-align: right; font-size: 10px; color: #7b857f; margin-top: 3px; }
+  .msg .doc { display: flex; gap: 8px; align-items: center; background: #f1f4f2; border-radius: 8px; padding: 8px; margin: 6px 0 2px; font-weight: 500; }
+  .msg .doc i { font-size: 22px; color: #c0392b; }
+  .msg .btnrow { border-top: 1px solid #e6ebe8; margin-top: 8px; padding-top: 7px; text-align: center; color: #0b8fd6; font-weight: 500; }
+  .sys { align-self: center; background: #fdf6d8; color: #5d5640; font-size: 11.5px; padding: 5px 10px; border-radius: 8px; opacity: 0; transition: opacity .5s; }
+  .sys.in { opacity: 1; }
+  .outcome { display: grid; gap: 28px; }
+  .outcome .big { font-size: clamp(56px, 6vw, 84px); line-height: .9; letter-spacing: -0.05em; font-weight: 650; }
+  .outcome .big small { display: block; font-size: 15px; letter-spacing: 0; font-weight: 400; color: var(--ink-3); margin-top: 12px; }
+  .outcome a { font-size: 15px; font-weight: 500; display: inline-flex; gap: 6px; align-items: center; }
+
+  /* CASE 3: Marketing OS */
+  .os { padding: 120px 0; }
+  .os-stage { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: center; margin-top: 48px; }
+  /* Marketing OS system map: sources -> modules -> what the team gets */
+  .osmap {
+    display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 44px; align-items: center;
+    padding: 34px 30px; border-radius: 18px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow);
+  }
+  .osmap .col { display: grid; gap: 10px; }
+  .osmap .col-h { font-size: 12px; color: var(--ink-3); margin-bottom: 4px; }
+  .src, .out {
+    position: relative; display: flex; align-items: center; gap: 9px; padding: 10px 12px; border-radius: 11px;
+    border: 1px solid var(--line); background: var(--surface); font-size: 13.5px; font-weight: 500;
+    transition: border-color .4s, background .4s, opacity .4s; opacity: .55;
+  }
+  .src i, .out i { font-size: 18px; color: var(--ink-3); transition: color .4s; }
+  .src::after, .out::before {
+    content: ""; position: absolute; top: 50%; width: 44px; height: 2px; background: var(--line); transition: background .4s;
+  }
+  .src::after { left: 100%; }
+  .out::before { right: 100%; }
+  .src.on, .out.on { opacity: 1; border-color: var(--accent-2); background: #f3fbf8; }
+  .src.on i, .out.on i { color: var(--accent); }
+  .src.on::after, .out.on::before { background: var(--accent-2); }
+  .hub { border-radius: 16px; background: var(--ink); color: #fff; padding: 18px; position: relative; z-index: 1; }
+  .hub-h { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; margin-bottom: 14px; }
+  .hub-h .mark { width: 28px; height: 28px; background: var(--accent-2); color: #04261b; font-size: 12px; }
+  .mods { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mod {
+    border-radius: 11px; padding: 12px; background: rgb(255 255 255 / .06); border: 1px solid rgb(255 255 255 / .1);
+    font-size: 13px; font-weight: 500; transition: background .4s, border-color .4s, transform .4s cubic-bezier(.16,1,.3,1);
+  }
+  .mod i { display: block; font-size: 20px; color: #8fa39a; margin-bottom: 6px; transition: color .4s; }
+  .mod.on { background: rgb(15 174 129 / .2); border-color: #3fc296; transform: scale(1.03); }
+  .mod.on i { color: #6ee7bf; }
+  .hub-foot { margin-top: 12px; font-size: 12px; color: #9fb0a8; display: flex; gap: 6px; align-items: center; }
+  .os-caps { display: grid; gap: 8px; }
+  .os-cap { padding: 14px 16px; border-left: 2px solid var(--line); opacity: .45; transition: opacity .4s, border-color .4s; }
+  .os-cap.on { opacity: 1; border-color: var(--accent); }
+  .os-cap h3 { font-size: 16px; font-weight: 600; }
+  .os-cap p { font-size: 14px; color: var(--ink-2); }
+  .honest { margin-top: 28px; font-size: 14px; color: var(--ink-2); display: flex; gap: 10px; align-items: flex-start; }
+  .honest i { color: var(--accent); font-size: 18px; margin-top: 2px; }
+
+  /* MARQUEE */
+  .more { padding: 20px 0 110px; overflow: hidden; }
+  .more h2 { text-align: left; }
+  .marquee { display: flex; gap: 14px; width: max-content; margin-top: 36px; animation: slide 46s linear infinite; }
+  .marquee:hover { animation-play-state: paused; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  .chipx {
+    display: inline-flex; align-items: center; gap: 10px; white-space: nowrap;
+    padding: 14px 18px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 15px;
+  }
+  .chipx i { font-size: 19px; color: var(--accent); }
+
+  /* LANDING WALL */
+  .pages { padding: 110px 0 120px; background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .wall { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 52px; }
+  .lp { text-decoration: none; display: block; }
+  .lp .frame {
+    position: relative; height: 290px; overflow: hidden; border-radius: 12px;
+    border: 1px solid var(--line); background: var(--surface-2); box-shadow: var(--shadow-sm);
+    transition: box-shadow .4s, transform .4s cubic-bezier(.16,1,.3,1);
+  }
+  .lp .frame::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 22px; background: var(--surface-2); border-bottom: 1px solid var(--line); z-index: 2; }
+  .lp .frame::after { content: ""; position: absolute; top: 8px; left: 10px; width: 34px; height: 6px; z-index: 3; background: radial-gradient(circle at 3px 3px, #c9d1cc 3px, transparent 3.5px) 0 0 / 12px 6px repeat-x; }
+  .lp img { position: absolute; top: 22px; left: 0; width: 100%; height: auto; transition: transform var(--dur, 7s) cubic-bezier(.45,.05,.4,1); }
+  .lp:hover .frame, .lp:focus-visible .frame { box-shadow: var(--shadow); transform: translateY(-4px); }
+  .lp:hover img, .lp:focus-visible img { transform: translateY(var(--shift, 0px)); }
+  .lp .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 14px; }
+  .lp h3 { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+  .lp .meta span { font-size: 13px; color: var(--ink-3); white-space: nowrap; }
+  .lp p { font-size: 14px; color: var(--ink-2); margin-top: 2px; }
+  .lp .go { display: inline-flex; gap: 4px; align-items: center; }
+  .wall-note { margin-top: 36px; font-size: 14px; color: var(--ink-3); display: flex; gap: 8px; align-items: center; }
+
+  /* HOW */
+  .how { padding: 120px 0 90px; }
+  .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 52px; border-top: 1px solid var(--line); }
+  .how-item { padding: 28px 24px 0 0; }
+  .how-item + .how-item { padding-left: 24px; border-left: 1px solid var(--line); }
+  .how-item i { font-size: 28px; color: var(--accent); }
+  .how-item h3 { font-size: 17px; font-weight: 600; margin-top: 16px; letter-spacing: -.01em; }
+  .how-item p { font-size: 14.5px; color: var(--ink-2); margin-top: 6px; }
+  .note {
+    margin-top: 48px; padding: 22px 26px; border-radius: var(--r); background: var(--accent-soft);
+    color: #0b4a39; font-size: 17px; max-width: 820px; display: flex; gap: 14px; align-items: flex-start;
+  }
+  .note i { font-size: 24px; color: var(--accent); margin-top: 1px; }
+
+  /* ABOUT: toolkit + experience */
+  .about { padding: 60px 0 110px; }
+  .about-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 72px; margin-top: 44px; }
+  .timeline { list-style: none; }
+  .timeline li { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .timeline .when { color: var(--ink-3); font-size: 14px; }
+  .timeline h3 { font-size: 17px; font-weight: 600; }
+  .timeline p { color: var(--ink-2); font-size: 15px; }
+  .tools h3 { font-size: 14px; color: var(--ink-3); font-weight: 500; margin: 0 0 12px; }
+  .tools h3:not(:first-child) { margin-top: 26px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips span { font-size: 14px; padding: 7px 13px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
+  .certs { list-style: none; display: grid; gap: 8px; font-size: 15px; }
+  .certs li { display: flex; gap: 10px; align-items: center; }
+  .certs i { color: var(--accent); font-size: 18px; }
+
+  /* CONTACT */
+  .contact { padding: 0 0 100px; }
+  .contact-box {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center;
+    background: var(--ink); color: #f2f5f3; border-radius: 26px; padding: 64px; overflow: hidden; position: relative;
+  }
+  .contact-box h2 { color: #fff; }
+  .contact-box p { color: #b8c2bd; margin-top: 16px; max-width: 46ch; font-size: 17px; }
+  .contact-links { display: grid; gap: 12px; position: relative; }
+  .contact-links a {
+    display: flex; align-items: center; gap: 12px; padding: 17px 20px; border-radius: 14px;
+    text-decoration: none; background: rgb(255 255 255 / .06); border: 1px solid rgb(255 255 255 / .12); font-size: 15px;
+    transition: background .2s, transform .25s cubic-bezier(.16,1,.3,1);
+  }
+  .contact-links a:hover { background: rgb(255 255 255 / .11); transform: translateX(3px); }
+  .contact-links a.primary { background: var(--accent-2); color: #04261b; border-color: transparent; font-weight: 600; }
+  .contact-links i { font-size: 20px; }
+  footer { padding: 0 0 48px; color: var(--ink-3); font-size: 14px; }
+
+  /* reveal */
+  .rv { opacity: 0; transform: translateY(26px); }
+  .no-motion .rv { opacity: 1; transform: none; }
+
+  /* MOBILE */
+  @media (max-width: 960px) {
+    .wrap { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding-top: 96px; min-height: auto; }
+    .hero-grid, .story, .ebook-grid, .os-stage, .about-grid, .contact-box { grid-template-columns: 1fr; }
+    .hero-grid { gap: 36px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+    .stats { padding-bottom: 80px; }
+    .steps { order: 2; }
+    .flow-row { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .flow-row.rev { direction: ltr; }
+    .flow-row + .flow-row { margin-top: 14px; }
+    .n8n::after, .turn { display: none; }
+    .osmap { grid-template-columns: 1fr; gap: 16px; padding: 20px; }
+    .src::after, .out::before { display: none; }
+    .step, .chain li, .os-cap { opacity: 1; }
+    .ebook { padding: 80px 0; }
+    .ebook-grid { gap: 40px; }
+    .phone { width: 290px; height: 560px; }
+    .wall { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .lp .frame { height: 220px; }
+    .how-grid { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+    .how-item:nth-child(3) { border-left: 0; padding-left: 0; }
+    .contact-box { padding: 36px 24px; }
+    .case, .os, .pages, .how { padding-top: 80px; padding-bottom: 80px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    .wall { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
+    .how-item, .how-item + .how-item { border-left: 0; padding-left: 0; }
+    .timeline li { grid-template-columns: 1fr; gap: 2px; }
+    .pipe .node { font-size: 11px; padding: 6px 8px; gap: 5px; }
+    .pipe .node i { font-size: 14px; }
+    .pipe .node.big { padding: 9px 10px; font-size: 12px; }
+    .avatar { width: 20px; height: 20px; font-size: 9px; }
+    .hero-cta .btn { flex: 1; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { animation: none; flex-wrap: wrap; width: auto; }
+    .live { animation: none; }
+    .lp img { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#top"><span class="mark">PL</span>Praveen L</a>
+    <ul class="nav-links">
+      <li><a href="#leads">Automations</a></li>
+      <li><a href="#os">Marketing OS</a></li>
+      <li><a href="#pages">Landing pages</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a class="btn btn-primary" href="mailto:prvnl254@gmail.com">Email me</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow hero-in"><span class="live"></span>AI & automation specialist, Bengaluru</span>
+        <h1 aria-label="I automate the busywork so marketing teams can sell.">
+          <span class="w"><span>I</span></span> <span class="w"><span>automate</span></span> <span class="w"><span>the</span></span>
+          <span class="w"><span>busywork</span></span> <span class="w"><span>so</span></span> <span class="w"><span class="hl">marketing</span></span>
+          <span class="w"><span class="hl">teams</span></span> <span class="w"><span>can</span></span> <span class="w"><span>sell.</span></span>
+        </h1>
+        <p class="sub hero-in">Lead routing, WhatsApp and CRM flows, and landing pages, built with n8n and Claude Code.</p>
+        <div class="hero-cta hero-in">
+          <a class="btn btn-primary" href="mailto:prvnl254@gmail.com"><i class="ph ph-envelope-simple"></i>Email me</a>
+          <a class="btn btn-ghost" href="#leads">See the systems<i class="ph ph-arrow-down"></i></a>
+        </div>
+      </div>
+
+      <!-- Live diagram of the real lead pipeline (sources -> CRM -> round-robin -> counsellors) -->
+      <div class="pipe hero-in" aria-label="Diagram: leads from ads, forms, Instagram and walk-ins flow into the CRM, get assigned round-robin, and reach a counsellor">
+        <svg viewBox="0 0 600 470" aria-hidden="true">
+          <path id="p0" class="wire" d="M150 70 C 215 70, 205 235, 262 235 L 362 235 C 420 235, 420 110, 470 110"/>
+          <path id="p1" class="wire" d="M150 175 C 215 175, 205 235, 262 235 L 362 235 C 420 235, 420 235, 470 235"/>
+          <path id="p2" class="wire" d="M150 295 C 215 295, 205 235, 262 235 L 362 235 C 420 235, 420 360, 470 360"/>
+          <path id="p3" class="wire" d="M150 400 C 215 400, 205 235, 262 235 L 362 235 C 420 235, 420 110, 470 110"/>
+          <g class="dots">
+            <circle class="dot" r="5"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0s"><mpath href="#p0"/></animateMotion></circle>
+            <circle class="dot" r="5"><animateMotion dur="3.2s" repeatCount="indefinite" begin="-0.8s"><mpath href="#p1"/></animateMotion></circle>
+            <circle class="dot" r="5"><animateMotion dur="3.2s" repeatCount="indefinite" begin="-1.6s"><mpath href="#p2"/></animateMotion></circle>
+            <circle class="dot" r="5"><animateMotion dur="3.2s" repeatCount="indefinite" begin="-2.4s"><mpath href="#p3"/></animateMotion></circle>
+          </g>
+        </svg>
+        <div class="node" style="left:15%;top:14.9%"><i class="ph ph-meta-logo"></i>Meta lead ads</div>
+        <div class="node" style="left:15%;top:37.2%"><i class="ph ph-browser"></i>Website forms</div>
+        <div class="node" style="left:15%;top:62.8%"><i class="ph ph-instagram-logo"></i>Instagram DMs</div>
+        <div class="node" style="left:15%;top:85.1%"><i class="ph ph-storefront"></i>City walk-ins</div>
+        <div class="node big dark" style="left:52%;top:50%"><i class="ph ph-database"></i>CRM + round-robin</div>
+        <div class="node person" id="c0" style="left:89%;top:23.4%"><span class="avatar" style="background:#0a7d5d">A</span>Counsellor A</div>
+        <div class="node person" id="c1" style="left:89%;top:50%"><span class="avatar" style="background:#2563a8">B</span>Counsellor B</div>
+        <div class="node person" id="c2" style="left:89%;top:76.6%"><span class="avatar" style="background:#b4532a">C</span>Counsellor C</div>
+        <div class="ticker"><i class="ph ph-whatsapp-logo" style="color:#1faa59"></i><span id="tick">New lead from <b>Meta lead ads</b> assigned to <b>Counsellor A</b></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="wrap stats-row">
+      <div class="stat rv"><b data-count="200" data-suffix="+">200+</b><span>n8n workflows built, 98 running every day</span></div>
+      <div class="stat rv"><b data-count="25" data-suffix="+">25+</b><span>landing pages shipped for 8+ countries</span></div>
+      <div class="stat rv"><b data-count="107">107</b><span>eBook sales delivered with no manual step</span></div>
+      <div class="stat rv"><b>2 min</b><span>from a new lead to an assigned counsellor</span></div>
+    </div>
+  </div>
+
+  <!-- CASE 1: LEAD ENGINE (real n8n workflow, node names as in production) -->
+  <section class="case" id="leads">
+    <div class="wrap">
+      <div class="case-head rv">
+        <span class="case-tag"><i class="ph ph-flow-arrow"></i>Lead engine</span>
+        <h2>Every lead reaches the right counsellor in two minutes</h2>
+        <p class="lead">This is my real Round-Robin workflow in n8n, live since June 2026. Scroll to watch one lead go through it.</p>
+      </div>
+
+      <div class="story" id="story1">
+        <div class="steps">
+          <div class="step" data-upto="3"><h3>Picks up new leads every 2 minutes</h3><p>Ads, forms, calls, DMs and walk-in desks all land in one CRM.</p></div>
+          <div class="step" data-upto="5"><h3>Assigns them fairly</h3><p>Rotates per course interest, skips anyone switched off, respects daily caps.</p></div>
+          <div class="step" data-upto="8"><h3>Messages the lead instantly</h3><p>WhatsApp template with the counsellor's name and number.</p></div>
+          <div class="step" data-upto="10"><h3>Alerts the counsellor</h3><p>Telegram card with lead details and a one-tap WhatsApp button.</p></div>
+          <div class="step" data-upto="15"><h3>Sends a nightly summary</h3><p>Each counsellor and the manager get the day's numbers at 11:59 PM.</p></div>
+        </div>
+
+        <div class="canvas" aria-label="n8n workflow: Round-Robin Lead Assignment">
+          <div class="canvas-bar"><b>Round-Robin Lead Assignment</b><span class="pill-live"><span class="live"></span>Active</span></div>
+          <div class="flow-row">
+            <div class="n8n"><div class="ic"><i class="ph ph-clock-countdown"></i></div><div class="nm">Every 2 Minutes</div><div class="ty">Schedule</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-magnifying-glass"></i></div><div class="nm">Search Unassigned Leads</div><div class="ty">Airtable</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-users"></i></div><div class="nm">Get Active Counsellors</div><div class="ty">Airtable</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-chart-bar"></i></div><div class="nm">Get Counsellor Counts</div><div class="ty">Airtable</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-shuffle"></i></div><div class="nm">Round-Robin Assign</div><div class="ty">Code</div><span class="turn"></span></div>
+          </div>
+          <div class="flow-row rev">
+            <div class="n8n"><div class="ic"><i class="ph ph-user-switch"></i></div><div class="nm">Update Lead Counsellor</div><div class="ty">Airtable</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-notebook"></i></div><div class="nm">Log Assigned Lead</div><div class="ty">Airtable</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-whatsapp-logo"></i></div><div class="nm">Send WhatsApp to Lead</div><div class="ty">WhatsApp</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-code"></i></div><div class="nm">Build Counsellor DM</div><div class="ty">Code</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-telegram-logo"></i></div><div class="nm">Notify Counsellor</div><div class="ty">Telegram</div></div>
+          </div>
+          <div class="branch-label mono">Nightly branch</div>
+          <div class="flow-row">
+            <div class="n8n"><div class="ic"><i class="ph ph-moon-stars"></i></div><div class="nm">Daily 11:59 PM IST</div><div class="ty">Schedule</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-list-checks"></i></div><div class="nm">Get Today's Assignments</div><div class="ty">Airtable</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-users"></i></div><div class="nm">Get Counsellors</div><div class="ty">Airtable</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-calculator"></i></div><div class="nm">Build Daily Summary</div><div class="ty">Code</div></div>
+            <div class="n8n"><div class="ic"><i class="ph ph-paper-plane-tilt"></i></div><div class="nm">Send Daily Summary</div><div class="ty">Telegram</div></div>
+          </div>
+          <div class="canvas-foot">
+            <span><i class="ph ph-toggle-right"></i>Who's in the rotation is a checkbox, not code</span>
+            <span><i class="ph ph-warning-circle"></i>Failures go to a shared error workflow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE 2: EBOOK AUTOPILOT -->
+  <section class="ebook" id="ebook">
+    <div class="wrap">
+      <div class="case-head rv">
+        <span class="case-tag"><i class="ph ph-book-open-text"></i>eBook autopilot</span>
+        <h2>A business that sells and delivers while everyone sleeps</h2>
+        <p class="lead">Nine country guides, one payment flow. From payment to WhatsApp in seconds, with no one touching it.</p>
+      </div>
+      <div class="ebook-grid" id="story2">
+        <ol class="chain">
+          <li><i class="ph ph-credit-card"></i><div><h3>Payment on Razorpay</h3><p>Webhook signature is verified first.</p></div></li>
+          <li><i class="ph ph-google-drive-logo"></i><div><h3>Drive access granted</h3><p>View-only, download and print blocked.</p></div></li>
+          <li><i class="ph ph-envelope-open"></i><div><h3>Welcome email sent</h3><p>With the reading link and support contact.</p></div></li>
+          <li><i class="ph ph-whatsapp-logo"></i><div><h3>WhatsApp "your guide is ready"</h3><p>Approved template, one per country.</p></div></li>
+          <li><i class="ph ph-arrow-counter-clockwise"></i><div><h3>Failed payment? Retry link</h3><p>Sent automatically on WhatsApp and email.</p></div></li>
+        </ol>
+
+        <div class="phone" aria-hidden="true">
+          <div class="screen">
+            <div class="wa-top"><span class="avatar">GC</span><div><b>GooCampus</b><small>Business account</small></div></div>
+            <div class="wa-body">
+              <span class="sys">Payment received: AMC Pathway Blueprint</span>
+              <div class="msg">Hi Ananya, thank you for your purchase. Your guide is ready to read.<span class="doc"><i class="ph ph-file-pdf"></i>AMC Pathway Blueprint 2026</span><span class="t">10:42 PM</span></div>
+              <div class="msg">Access has been shared to your Google account. Open it any time from Drive.<div class="btnrow">Open my guide</div><span class="t">10:42 PM</span></div>
+              <div class="msg">Questions about the AMC pathway? Reply here and our team will help.<span class="t">10:43 PM</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="outcome">
+          <div class="big rv">9<small>country eBooks on autopilot: Australia, NZ, Canada, Germany, India, Ireland, Qatar, Saudi, UAE</small></div>
+          <div class="big rv">107<small>sales recorded for Australia and NZ alone (Oct 2026), zero manual steps</small></div>
+          <a class="rv" href="https://goocampusevents.com/amc-pathway/" target="_blank" rel="noopener">See the sales page <i class="ph ph-arrow-up-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE 3: MARKETING OS -->
+  <section class="os" id="os">
+    <div class="wrap">
+      <div class="case-head rv">
+        <span class="case-tag"><i class="ph ph-squares-four"></i>Marketing OS</span>
+        <h2>The app my marketing team works in every day</h2>
+        <p class="lead">I spotted the problem (5 brands, too many tools), wrote the specs, and shipped it with Claude Code. Over 1,200 changes since June 2026.</p>
+      </div>
+      <div class="os-stage" id="story3">
+        <!-- data-m = which module (0 analytics, 1 pipeline, 2 scheduler, 3 radar) each item feeds -->
+        <div class="osmap" aria-label="Diagram: data sources feed Marketing OS modules, which deliver reports, tasks, posts and alerts to the team">
+          <div class="col">
+            <span class="col-h mono">Pulls in</span>
+            <div class="src" data-m="0 2"><i class="ph ph-instagram-logo"></i>Instagram, 5 brands</div>
+            <div class="src" data-m="0"><i class="ph ph-meta-logo"></i>Meta Ads</div>
+            <div class="src" data-m="0 3"><i class="ph ph-youtube-logo"></i>YouTube</div>
+            <div class="src" data-m="0 2"><i class="ph ph-linkedin-logo"></i>LinkedIn pages</div>
+            <div class="src" data-m="1"><i class="ph ph-lightbulb"></i>Content ideas and briefs</div>
+            <div class="src" data-m="3"><i class="ph ph-binoculars"></i>Competitor sites, Reddit</div>
+          </div>
+          <div class="hub">
+            <div class="hub-h"><span class="mark">M</span>Marketing OS</div>
+            <div class="mods">
+              <div class="mod"><i class="ph ph-chart-line-up"></i>Analytics</div>
+              <div class="mod"><i class="ph ph-kanban"></i>Content pipeline</div>
+              <div class="mod"><i class="ph ph-calendar-check"></i>Scheduler</div>
+              <div class="mod"><i class="ph ph-radar"></i>Competitor radar</div>
+            </div>
+            <div class="hub-foot"><i class="ph ph-lock-simple"></i>Per-person access, 69 pages</div>
+          </div>
+          <div class="col">
+            <span class="col-h mono">Gives the team</span>
+            <div class="out" data-m="0"><i class="ph ph-sparkle"></i>AI-written reports</div>
+            <div class="out" data-m="1"><i class="ph ph-user-circle-check"></i>Tasks routed to the right person</div>
+            <div class="out" data-m="1"><i class="ph ph-slack-logo"></i>Approval alerts in Slack</div>
+            <div class="out" data-m="2"><i class="ph ph-paper-plane-tilt"></i>Posts published on time</div>
+            <div class="out" data-m="3"><i class="ph ph-bell-ringing"></i>Competitor alerts</div>
+          </div>
+        </div>
+        <div class="os-caps">
+          <div class="os-cap"><h3>Analytics for 5 brands</h3><p>Instagram, Meta Ads, YouTube and LinkedIn in one place.</p></div>
+          <div class="os-cap"><h3>Content pipeline</h3><p>Idea to approval to publish, with owner rules built in.</p></div>
+          <div class="os-cap"><h3>Scheduler</h3><p>Reels, carousels and stories go out on the minute.</p></div>
+          <div class="os-cap"><h3>Competitor radar</h3><p>A watcher flags new competitor moves every 5 minutes.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MORE AUTOMATIONS -->
+  <section class="more" aria-label="Other automations">
+    <div class="wrap"><h2 class="rv">And 95 more running every day</h2></div>
+    <div class="marquee" aria-hidden="true">
+      <span class="chipx"><i class="ph ph-meta-logo"></i>One webhook for every Meta lead form</span>
+      <span class="chipx"><i class="ph ph-robot"></i>AI counsellor for Instagram DMs</span>
+      <span class="chipx"><i class="ph ph-microphone"></i>Call recordings to written summaries</span>
+      <span class="chipx"><i class="ph ph-binoculars"></i>Competitor watcher</span>
+      <span class="chipx"><i class="ph ph-bell-ringing"></i>Exam counselling notice alerts</span>
+      <span class="chipx"><i class="ph ph-megaphone"></i>WhatsApp broadcast scheduler</span>
+      <span class="chipx"><i class="ph ph-ticket"></i>PDF voucher generator</span>
+      <span class="chipx"><i class="ph ph-heartbeat"></i>Daily health check with pass/fail email</span>
+      <span class="chipx"><i class="ph ph-linkedin-logo"></i>LinkedIn auto-publishing</span>
+      <span class="chipx"><i class="ph ph-meta-logo"></i>One webhook for every Meta lead form</span>
+      <span class="chipx"><i class="ph ph-robot"></i>AI counsellor for Instagram DMs</span>
+      <span class="chipx"><i class="ph ph-microphone"></i>Call recordings to written summaries</span>
+      <span class="chipx"><i class="ph ph-binoculars"></i>Competitor watcher</span>
+      <span class="chipx"><i class="ph ph-bell-ringing"></i>Exam counselling notice alerts</span>
+      <span class="chipx"><i class="ph ph-megaphone"></i>WhatsApp broadcast scheduler</span>
+      <span class="chipx"><i class="ph ph-ticket"></i>PDF voucher generator</span>
+      <span class="chipx"><i class="ph ph-heartbeat"></i>Daily health check with pass/fail email</span>
+      <span class="chipx"><i class="ph ph-linkedin-logo"></i>LinkedIn auto-publishing</span>
+    </div>
+  </section>
+
+  <!-- LANDING PAGES -->
+  <section class="pages" id="pages">
+    <div class="wrap">
+      <div class="case-head rv">
+        <span class="case-tag"><i class="ph ph-browsers"></i>Landing pages</span>
+        <h2>15 live pages I designed and shipped</h2>
+        <p class="lead">Hover a page to scroll through it. Click to open the live site. Every one has lead forms or payments wired to automation.</p>
+      </div>
+      <div class="wall" id="wall"></div>
+      <p class="wall-note"><i class="ph ph-cursor-click"></i>All links open the real, live pages.</p>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section class="how" id="how">
+    <div class="wrap">
+      <h2 class="rv">How I work</h2>
+      <div class="how-grid">
+        <div class="how-item rv"><i class="ph ph-note-pencil"></i><h3>Spec it in plain language</h3><p>Who does what, which status moves where, what must never happen. Written before building.</p></div>
+        <div class="how-item rv"><i class="ph ph-flow-arrow"></i><h3>Build with n8n and Claude Code</h3><p>Workflows, integrations and pages connected through APIs and webhooks.</p></div>
+        <div class="how-item rv"><i class="ph ph-check-square-offset"></i><h3>Test against live data</h3><p>Test plans, error alerts and daily health checks, so failures never go unnoticed.</p></div>
+        <div class="how-item rv"><i class="ph ph-users-three"></i><h3>Hand it over</h3><p>Plain-English guides and release notes, so the team actually uses it.</p></div>
+      </div>
+      <div class="note rv"><i class="ph ph-sparkle"></i><span>I build n8n workflows myself and use Claude Code to write most of the code. I own the idea, the logic, the testing and the result.</span></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <h2 class="rv">Background</h2>
+      <div class="about-grid">
+        <ul class="timeline">
+          <li class="rv"><span class="when">2024 to now</span><div><h3>GooCampus Edu Solutions</h3><p>Senior UI/UX and Graphic Designer. Grew into owning the marketing automation and web stack.</p></div></li>
+          <li class="rv"><span class="when">2022 to 2023</span><div><h3>Aam Aadmi Party</h3><p>Manager. Planned and ran campaigns and events, and led a team.</p></div></li>
+          <li class="rv"><span class="when">2021 to 2022</span><div><h3>Wall of Tunes</h3><p>Graphic Designer.</p></div></li>
+          <li class="rv"><span class="when">2018 to 2020</span><div><h3>Freelance</h3><p>Graphic Designer for clients across Bengaluru.</p></div></li>
+          <li class="rv"><span class="when">2014 to 2017</span><div><h3>Bangalore University</h3><p>BCA, Computer Science.</p></div></li>
+        </ul>
+        <div class="tools rv">
+          <h3>Automation and AI</h3>
+          <div class="chips"><span>n8n</span><span>Claude Code</span><span>Webhooks and REST APIs</span><span>OpenRouter</span><span>Apify</span></div>
+          <h3>Marketing and CRM</h3>
+          <div class="chips"><span>Meta Ads and Pixel</span><span>WhatsApp Cloud API</span><span>Airtable</span><span>Supabase</span><span>Razorpay</span><span>GA4</span></div>
+          <h3>Design and web</h3>
+          <div class="chips"><span>UI/UX</span><span>Landing pages</span><span>Astro</span><span>Tailwind</span><span>Netlify</span></div>
+          <h3>Certifications</h3>
+          <ul class="certs">
+            <li><i class="ph ph-seal-check"></i>Claude Code 101, Anthropic</li>
+            <li><i class="ph ph-seal-check"></i>Claude 101, Anthropic</li>
+            <li><i class="ph ph-seal-check"></i>n8n No Code AI Agent Builder</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-box rv">
+        <div>
+          <h2>Want this for your team?</h2>
+          <p>I'm looking for an automation or martech role in Bengaluru. Happy to walk you through any of these systems live.</p>
+        </div>
+        <div class="contact-links">
+          <a class="primary" href="mailto:prvnl254@gmail.com"><i class="ph ph-envelope-simple"></i>Email me</a>
+          <a href="https://www.linkedin.com/in/praveen-l-9613a0116" target="_blank" rel="noopener"><i class="ph ph-linkedin-logo"></i>LinkedIn</a>
+          <a href="tel:+919989876787"><i class="ph ph-phone"></i>+91 99898 76787</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Praveen L, Bengaluru</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* ---------- landing page wall (data) ---------- */
+const PAGES = [
+  ['medical-pg', 'Medical PG Options', 'Paid 1:1 strategy session', 'https://goocampusevents.com/medical-pg-options/', 'Booking'],
+  ['amc-pathway', 'AMC Pathway eBook', 'eBook sales with Razorpay', 'https://goocampusevents.com/amc-pathway/', 'Payments'],
+  ['germany-pg', 'Germany Medical PG', 'Country pathway for doctors', 'https://beast-clone.github.io/germany-pg-landing/', 'Lead form'],
+  ['gulf-pgcp', 'Gulf Licensing', 'DHA, DOH and SCFHS journey', 'https://beast-clone.github.io/gulf-pgcp-landing/', 'Lead form'],
+  ['als-course', 'ALS Course India', 'Built for Google and AI search', 'https://beast-clone.github.io/als-course-landing/', 'SEO'],
+  ['apollo', 'Apollo Fellowship', 'Programme with Apollo Hospitals', 'https://goocampusevents.com/apollo-fellowship-programme/', 'Registration'],
+  ['amc-mcq', 'AMC MCQ Coaching', 'Coaching programme and pricing', 'https://beast-clone.github.io/goocampus-australia-rebrand/index-v3.html', 'Enquiry'],
+  ['amc-clinical', 'AMC Clinical Prep', 'Clinical exam course', 'https://beast-clone.github.io/goocampus-australia-rebrand/amc-clinical.html', 'WhatsApp'],
+  ['nz-pathway', 'NZ Pathway eBook', 'Handbook sales page', 'https://goocampusevents.com/nz-pathway/', 'Payments'],
+  ['gc-consulting', 'GC Consulting', '1:1 career strategy session', 'https://goocampusevents.com/gc-consulting/', 'Booking'],
+  ['samvaya', 'Samvaya Matrimony', 'Moved off Framer to Netlify', 'https://samvayamatrimony.com/', 'Waitlist'],
+  ['samvaya-events', 'Samvaya Launch Page', 'Private matchmaking sign-up', 'https://goocampusevents.com/samvaya-matrimony/', 'Sign-up'],
+  ['mbbs-community', 'MBBS Abroad Community', 'WhatsApp community join page', 'https://goocampusevents.com/mbbs-abroad-community/', 'WhatsApp'],
+  ['neet-ug-community', 'NEET UG Community', 'WhatsApp community join page', 'https://goocampusevents.com/neet-ug-community/', 'WhatsApp'],
+  ['neet-pg-community', 'NEET PG Community', 'WhatsApp community join page', 'https://goocampusevents.com/neet-pg-community/', 'WhatsApp'],
+];
+const wall = document.getElementById('wall');
+wall.innerHTML = PAGES.map(([f, t, d, u, tag]) => `
+  <a class="lp rv" href="${u}" target="_blank" rel="noopener">
+    <div class="frame"><img src="assets/pages/${f}.jpg" alt="${t} landing page" loading="lazy" width="720"></div>
+    <div class="meta"><h3>${t}</h3><span class="go">${tag} <i class="ph ph-arrow-up-right"></i></span></div>
+    <p>${d}</p>
+  </a>`).join('');
+// scroll distance per card = image height minus frame height
+wall.querySelectorAll('.lp').forEach(a => {
+  const img = a.querySelector('img'), frame = a.querySelector('.frame');
+  const set = () => {
+    const shift = Math.max(0, img.offsetHeight - (frame.clientHeight - 22));
+    a.style.setProperty('--shift', -shift + 'px');
+    a.style.setProperty('--dur', Math.max(2, shift / 260) + 's');
+  };
+  img.complete ? set() : img.addEventListener('load', set);
+  window.addEventListener('resize', set);
+});
+
+/* ---------- motion ---------- */
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hdr = document.getElementById('hdr');
+new IntersectionObserver(([e]) => hdr.classList.toggle('scrolled', !e.isIntersecting)).observe(document.querySelector('.hero h1'));
+
+function setSteps(list, n) { list.forEach((el, i) => el.classList.toggle('on', i < n)); }
+const n8nNodes = [...document.querySelectorAll('#story1 .n8n')];
+const turn = document.querySelector('#story1 .turn');
+const steps1 = [...document.querySelectorAll('#story1 .step')];
+function lead(p) { // p: 0..1
+  const lit = Math.round(p * n8nNodes.length);
+  setSteps(n8nNodes, lit);
+  turn.classList.toggle('on', lit >= 5);
+  steps1.forEach(s => s.classList.remove('on'));
+  const cur = steps1.find(s => lit <= +s.dataset.upto) || steps1[steps1.length - 1];
+  cur.classList.add('on');
+}
+const chain = [...document.querySelectorAll('#story2 .chain li')];
+const msgs = [...document.querySelectorAll('#story2 .sys, #story2 .msg')];
+function ebook(p) {
+  setSteps(chain, Math.ceil(p * chain.length));
+  setSteps(msgs, Math.ceil(p * (msgs.length + .4)));
+  msgs.forEach((m, i) => m.classList.toggle('in', i < Math.ceil(p * (msgs.length + .4))));
+}
+const caps = [...document.querySelectorAll('#story3 .os-cap')];
+const mods = [...document.querySelectorAll('#story3 .mod')];
+const links = [...document.querySelectorAll('#story3 [data-m]')];
+function os(p) {
+  const i = Math.min(caps.length - 1, Math.floor(p * caps.length));
+  caps.forEach((c, k) => c.classList.toggle('on', k === i));
+  mods.forEach((m, k) => m.classList.toggle('on', k === i));
+  links.forEach(l => l.classList.toggle('on', l.dataset.m.split(' ').includes(String(i))));
+}
+
+if (reduce || !window.gsap) {
+  document.documentElement.classList.add('no-motion');
+  lead(1); ebook(1); os(0);
+} else {
+  gsap.registerPlugin(ScrollTrigger);
+  const lenis = new Lenis({ lerp: 0.1 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -70 }); }
+  }));
+
+  // hero entrance: words rise in, then the rest fades up
+  gsap.from('.hero h1 .w > span', { yPercent: 110, duration: 1, ease: 'expo.out', stagger: 0.05, delay: 0.1 });
+  gsap.from('.hero-in', { opacity: 0, y: 24, duration: 1, ease: 'expo.out', stagger: 0.1, delay: 0.45 });
+
+  // generic reveal
+  gsap.utils.toArray('.rv').forEach(el => gsap.to(el, {
+    opacity: 1, y: 0, duration: 0.9, ease: 'expo.out',
+    scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+  }));
+
+  // count-up stats
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const end = +el.dataset.count, suf = el.dataset.suffix || '', o = { v: 0 };
+    ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () =>
+      gsap.to(o, { v: end, duration: 1.6, ease: 'power3.out', onUpdate: () => el.textContent = Math.round(o.v) + suf }) });
+  });
+
+  // pinned scroll stories on desktop, simple reveal on mobile
+  gsap.matchMedia().add({ desk: '(min-width: 961px)', mob: '(max-width: 960px)' }, ctx => {
+    if (ctx.conditions.desk) {
+      ScrollTrigger.create({ trigger: '#story1', start: 'center center', end: '+=1400', pin: true, scrub: true, onUpdate: s => lead(s.progress) });
+      ScrollTrigger.create({ trigger: '#story2', start: 'center center', end: '+=1100', pin: true, scrub: true, onUpdate: s => ebook(s.progress) });
+      ScrollTrigger.create({ trigger: '#story3', start: 'center center', end: '+=1300', pin: true, scrub: true, onUpdate: s => os(s.progress) });
+      lead(0); ebook(0); os(0);
+    } else {
+      ScrollTrigger.create({ trigger: '#story1 .canvas', start: 'top 75%', end: 'bottom 40%', scrub: true, onUpdate: s => lead(s.progress) });
+      ScrollTrigger.create({ trigger: '#story2 .phone', start: 'top 80%', end: 'bottom 60%', scrub: true, onUpdate: s => ebook(s.progress) });
+      ScrollTrigger.create({ trigger: '#story3 .osmap', start: 'top 70%', end: 'bottom 30%', scrub: true, onUpdate: s => os(s.progress) });
+    }
+  });
+}
+
+/* hero ticker: cycles through sources and counsellors in step with the moving dots */
+if (!reduce) {
+  const SRC = ['Meta lead ads', 'Website forms', 'Instagram DMs', 'City walk-ins'];
+  const DEST = [0, 1, 2, 0];
+  let k = 0;
+  setInterval(() => {
+    const c = DEST[k % 4];
+    document.getElementById('tick').innerHTML = `New lead from <b>${SRC[k % 4]}</b> assigned to <b>Counsellor ${'ABC'[c]}</b>`;
+    const el = document.getElementById('c' + c); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+    k++;
+  }, 800);
+}
+</script>
+</body>
+</html>
