@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case study | Praveen L</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&family=Inter:wght@400;500;600;700&family=Yellowtail&family=Fragment+Mono&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="work">
+<main class="detail"><div class="dwrap" id="main"></div></main>
+<section class="next"><div class="wrap">
+  <div class="sec-head"><span class="tag" data-type="Next project"></span><h2 class="h44 rv">Keep exploring</h2></div>
+  <div class="plist" id="next"></div>
+</div></section>
+<div id="foot"></div>
+<div class="lightbox" id="lb"><img alt=""></div>
+<script src="js/data.js"></script>
+<script src="js/cards.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get('p');
+  const i = Math.max(0, PROJECTS.findIndex(x => x.id === id));
+  const p = PROJECTS[i];
+  document.title = p.name + ' | Praveen L';
+  document.getElementById('main').innerHTML = `
+    <a class="back" href="projects.html" onclick="if(history.length>1&&document.referrer.includes(location.host)){history.back();return false}"><i class="ph ph-arrow-left"></i>Go back</a>
+    <h1 class="rv">${p.name}: ${p.title}</h1>
+    <p class="sub rv" style="--d:.1s">${p.intro}</p>
+    ${p.videoFull ? `<div class="dvid rv" style="--d:.15s"><video src="${p.videoFull}" poster="${p.poster}" controls playsinline preload="metadata"></video></div>` : `<div class="dhero rv" style="--d:.15s"><img src="${p.img}" alt="${p.name}"></div>`}
+    <div class="dmeta rv">${p.meta.map(([k, v]) => `<div><span>${k}</span><b>${v}</b></div>`).join('')}</div>
+    <div class="dsec rv"><h2>The problem</h2><p>${p.problem}</p></div>
+    <div class="dsec"><h2 class="rv">What I built</h2><ol class="built">${p.built.map(b => `<li class="rv">${b}</li>`).join('')}</ol></div>
+    <div class="dsec"><h2 class="rv">The result</h2><div class="dres">${p.results.map(([n, l], k) => `<div class="sel rv" style="--d:${k * .08}s"><b>${n}</b><span>${l}</span></div>`).join('')}</div></div>
+    <div class="dsec rv"><h2>My role</h2><p>${p.role}</p></div>
+    ${p.id === 'landing-pages' && window.LANDINGS ? `<div class="dsec"><h2 class="rv">All live pages</h2><p class="rv">Click any page to open the live site. Hover to scroll through it.</p>
+      <div class="lpg">${LANDINGS.map((l, k) => `<a class="lp sel rv" style="--d:${(k % 3) * .06}s" href="${l.url}" target="_blank" rel="noopener"><span class="im"><img src="${l.page}" alt="${l.name}" loading="lazy"></span><span class="tx"><b>${l.name}</b><small>${l.line}</small><em>${l.host} <i class="ph ph-arrow-up-right"></i></em></span></a>`).join('')}</div></div>` :
+    p.gallery.length ? `<div class="dsec"><h2 class="rv">Screens</h2><div class="dgal ${p.gallery.length === 1 ? 'one' : ''}">${p.gallery.map(s => `<img class="rv" src="${s}" alt="" loading="lazy">`).join('')}</div></div>` : ''}
+    ${p.live && p.id !== 'landing-pages' ? `<div class="dsec rv"><a class="btn dark" href="${p.live}" target="_blank" rel="noopener">See it live <i class="ph ph-arrow-up-right"></i></a></div>` : ''}`;
+  document.getElementById('next').innerHTML = projectCard(PROJECTS[(i + 1) % PROJECTS.length], (i + 1) % PROJECTS.length); wireCardVideos();
+</script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

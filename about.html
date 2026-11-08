@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | Praveen L</title>
+<meta name="description" content="Designer turned automation specialist. Career, numbers and how Praveen L works.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&family=Inter:wght@400;500;600;700&family=Yellowtail&family=Fragment+Mono&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="about">
+
+<section class="ahero">
+  <svg class="swoosh" style="inset:0;width:100%;height:100%" viewBox="0 0 1440 880" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="go" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6BE45"/><stop offset="1" stop-color="#F5A23A"/></linearGradient>
+      <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16C45B"/><stop offset="1" stop-color="#5BEA9A"/></linearGradient>
+    </defs>
+    <path d="M-30 230 C 90 330 70 520 -30 640" stroke="url(#go)" stroke-width="48" style="--dl:.15s"/>
+    <path d="M1400 -30 C 1300 180 1360 380 1480 460" stroke="url(#gg)" stroke-width="48" style="--dl:.4s"/>
+  </svg>
+  <div class="cols">
+    <div class="polaroids">
+      <div class="pol b"><div class="pic"></div></div>
+      <div class="pol a"><div class="pic"><img src="assets/praveen.jpg" alt="Praveen L"></div><div class="cap">Bengaluru, 2026</div></div>
+    </div>
+    <div class="aboutcard-wrap" style="position:relative;opacity:0;animation:rise 1s .35s forwards">
+      <div class="lbl"><i class="ph ph-diamonds-four"></i>About me</div>
+      <div class="aboutcard sel">
+        <h1>I started as a designer and ended up owning the marketing stack.</h1>
+        <p>I'm Praveen, an AI and automation specialist in Bengaluru. At GooCampus I saw the team losing hours to copy-paste work, so I began automating it, one workflow at a time.</p>
+        <p>Today I build the lead routing, WhatsApp follow-ups, payments, auto-publishing and the internal app the whole team works in.</p>
+      </div>
+      <div class="cursor-tag" style="right:-40px;bottom:-78px;--tc:var(--purple)">
+        <svg viewBox="0 0 24 24"><path d="M3 2l18 8-8 2.5L10 21z" fill="#8427DE" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span>Based in Bengaluru</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="numbers">
+  <div class="wrap">
+    <span class="sticker" style="left:calc(50% - 470px);top:40px;--s:80px;--fill:#F3B4F0;--glow:#E879F9;--r:-10deg;--dl:.2s"><span class="ic"><i class="ph-fill ph-rocket-launch f"></i><i class="ph-bold ph-rocket-launch b"></i></span></span>
+    <div class="sec-head"><span class="tag" data-type="By the numbers"></span><h2 class="h44 rv">A snapshot of my journey</h2></div>
+    <div class="nums" id="nums"></div>
+  </div>
+</section>
+
+<section class="career">
+  <div class="wrap">
+    <div class="sec-head"><span class="tag" style="--c:var(--green)" data-type="Career checkpoints"></span><h2 class="h44 rv">From design to automation</h2></div>
+  </div>
+  <div class="board" id="board"><svg class="links" id="links"></svg></div>
+</section>
+
+<section class="edu">
+  <div class="wrap">
+    <div class="sec-head"><span class="tag" style="--c:var(--blue)" data-type="Education & certificates"></span><h2 class="h44 rv">What I studied</h2></div>
+    <div class="edu-grid" id="edu"></div>
+    <div class="honest rv"><i class="ph-fill ph-sparkle"></i><p><b>How I build.</b> I write n8n workflows myself and use Claude Code for most of the app and page code. I own the spec, the logic, the testing and the result.</p></div>
+  </div>
+</section>
+
+<div id="foot"></div>
+
+<script src="js/data.js"></script>
+<script>
+  const pad = n => String(n).padStart(2, '0');
+  document.getElementById('nums').innerHTML = STATS.map(([v, l, r], i) => `
+    <div class="ncard sel" data-r="${r}"><div class="top"><span>${pad(i + 1)}</span><b></b></div>
+      <div class="v">${v}</div><div class="ruler">${'<i></i>'.repeat(20)}</div><div class="l">${l}</div></div>`).join('');
+  const SPOT = [[110, 0, 7], [590, 250, -6], [150, 560, 6], [570, 840, -5]];
+  document.getElementById('board').insertAdjacentHTML('beforeend', CAREER.map((c, i) => `
+    <div class="ck" style="left:${SPOT[i][0]}px;top:${SPOT[i][1]}px;--r:${SPOT[i][2]}deg;--c:${c.c}">
+      ${c.now ? '<span class="now">CURRENTLY HERE</span>' : ''}
+      <div class="top"><b>${c.n}</b><span>${c.yrs}</span></div>
+      <div class="lg"><i class="ph-fill ${c.ic}"></i></div>
+      <h3>${c.co}</h3><div class="role">${c.role}</div><div class="wh">${c.where}</div><p>${c.d}</p>
+    </div>`).join(''));
+  document.getElementById('board').style.height = '1160px';
+  const drawLinks = () => {
+    const b = document.getElementById('board'), cs = [...b.querySelectorAll('.ck')];
+    document.getElementById('links').innerHTML = cs.slice(1).map((c, i) => {
+      const a = cs[i], left = a.offsetLeft < c.offsetLeft;
+      const x1 = left ? a.offsetLeft + a.offsetWidth - 20 : a.offsetLeft + 20, y1 = a.offsetTop + a.offsetHeight * .7;
+      const x2 = left ? c.offsetLeft + 20 : c.offsetLeft + c.offsetWidth - 20, y2 = c.offsetTop + c.offsetHeight * .35;
+      return `<path d="M${x1} ${y1} L${x2} ${y2}"/>`;
+    }).join('');
+  };
+  document.fonts.ready.then(drawLinks); addEventListener("resize", drawLinks);
+  document.getElementById('edu').innerHTML = EDU.map(([t, w, y, ic]) => `
+    <div class="ecard sel rv"><i class="ph-fill ${ic}"></i><b>${t}</b><span>${w}</span><em>${y}</em></div>`).join('');
+</script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

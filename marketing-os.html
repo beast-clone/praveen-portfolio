@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketing OS | Praveen L</title>
+<meta name="description" content="Marketing OS: one app where a 5-brand marketing team plans, creates, publishes, measures and sells. Specced, tested and shipped by Praveen L.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&family=Inter:wght@400;500;600;700&family=Yellowtail&family=Fragment+Mono&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .mos .dwrap{width:min(1080px,calc(100% - 32px))}
+  .mos .narrow{max-width:750px}
+  .mos .dvid{margin-top:44px}
+  .mos .dsec p.lead{max-width:640px}
+  .repl{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;align-items:center}
+  .repl span{padding:8px 14px;border:1px dashed var(--line);font-size:15px;color:var(--grey);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.35)}
+  .repl i{font-size:22px;margin:0 6px}
+  .repl b{padding:8px 14px;background:#000;color:#fff;font-family:var(--head);font-weight:500;font-size:16px}
+  .diff{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+  .diff>div{--c:var(--purple);padding:22px}
+  .diff i{font-size:28px}
+  .diff h3{font-family:var(--head);font-weight:500;font-size:20px;letter-spacing:-.03em;margin-top:14px;line-height:1.25}
+  .diff p{font-size:15px!important;margin-top:8px!important}
+  .grp{margin-top:64px}
+  .grp>h3{font-family:'Fragment Mono',monospace;font-weight:400;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .feat{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;align-items:center;padding:36px 0;border-bottom:1px solid var(--line)}
+  .feat:nth-child(odd of .feat){grid-template-columns:1fr 1.25fr}
+  .feat:nth-child(odd of .feat) .fimg{order:2}
+  .fimg{--c:var(--purple);padding:0;overflow:hidden;cursor:zoom-in}
+  .fimg img{width:100%;display:block}
+  .feat h4{font-family:var(--head);font-weight:500;font-size:26px;letter-spacing:-.04em;line-height:1.2}
+  .feat p{font-size:16px;line-height:1.5;color:var(--grey);margin-top:12px}
+  .feat ul{margin:14px 0 0;padding-left:18px;color:var(--grey);font-size:15px;line-height:1.55}
+  .dres.four{grid-template-columns:repeat(4,1fr)}
+  .mos .dsec p b,.mos .diff p b{color:var(--ink);font-weight:600}
+  .steps{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column}
+  .steps li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line)}
+  .steps li>span{font-family:'Fragment Mono',monospace;font-size:15px;color:var(--purple);padding-top:5px}
+  .steps h3{font-family:var(--head);font-weight:500;font-size:22px;letter-spacing:-.03em;line-height:1.25}
+  .steps p{margin-top:8px!important}
+  .note{font-size:14px!important;color:var(--grey);margin-top:14px!important;max-width:640px}
+  @media (max-width:860px){
+    .diff{grid-template-columns:1fr}
+    .feat,.feat:nth-child(odd of .feat){grid-template-columns:1fr;gap:18px}
+    .feat:nth-child(odd of .feat) .fimg{order:0}
+    .dres.four{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body data-page="work">
+<main class="detail mos"><div class="dwrap" id="main"></div></main>
+<section class="next"><div class="wrap">
+  <div class="sec-head"><span class="tag" data-type="Next project"></span><h2 class="h44 rv">Keep exploring</h2></div>
+  <div class="plist" id="next"></div>
+</div></section>
+<div id="foot"></div>
+<div class="lightbox" id="lb"><img alt=""></div>
+<script src="js/data.js"></script>
+<script src="js/cards.js"></script>
+<script>
+  const p = PROJECTS.find(x => x.id === 'marketing-os');
+  const S = n => `assets/mos/${n}.jpg`;
+  // What makes it different (honest framing; see MARKETING_OS_FEATURES.md)
+  const DIFF = [
+    ['ph-users-three', 'Marketing and sales in one place', 'Most social tools stop at likes and comments. Here, the leads those posts bring in land in the same app, assigned to a counsellor and followed up.'],
+    ['ph-flow-arrow', 'Work routes itself', 'A design task goes straight to the designer. A video goes to the editors. Every person sees only the work that is theirs to do next.'],
+    ['ph-chat-circle-dots', 'Run it by asking Claude', 'Other tools let AI post for you. Here Claude can also create and move tasks, check what is due, and read the radar for the whole team.'],
+    ['ph-first-aid-kit', 'It checks and repairs itself', 'One click (or every morning, on its own) tests every connection, reconnects what it safely can, and flags the rest.'],
+    ['ph-robot', 'Tracks what AI says about you', 'It asks ChatGPT, Gemini, Google AI and Perplexity the questions students ask, and records whether the brand is named.'],
+    ['ph-map-pin', 'Built for Indian education', 'Exam-notice watchers for KEA, MCC and NMC, and review sites like MouthShut and ValueMD that global tools ignore.'],
+  ];
+  // Feature tour, grouped. Images are stills from the walkthrough (rebuilt UI, private data blurred).
+  const GROUPS = [
+    ['Plan and create', [
+      ['01-overview', 'One morning view', 'Followers, reach, engagement and profile visits for every brand and platform, with a one-line tip under each number on what to do next.'],
+      ['02-master-sheet', 'The master sheet', 'Every piece of content, from idea to published, in one filterable sheet. Status changes route the work to the right person automatically.'],
+      ['03-content-studio', 'Content Studio with 50 playbooks', 'Type a topic or pick one from the radar. It checks the facts against official sources first, then drafts the carousel and caption and puts it on the board.', ['50 one-click marketing playbooks in 7 groups', 'SEO, conversion, copy, paid, growth, sales and strategy', 'Everything it writes is a draft for a person to approve']],
+    ]],
+    ['Publish', [
+      ['04-scheduler', 'Scheduler', 'Schedule once to Instagram, Facebook and LinkedIn. Posts go out on the minute, failures can be retried with one click, and the live links are saved back to the task.'],
+      ['09-broadcast', 'WhatsApp community broadcasts', 'Messages, polls and status posts to WhatsApp groups and channels, scheduled on a calendar like any other post.'],
+    ]],
+    ['Measure', [
+      ['05-ads', 'Ads with an AI analyst', 'Spend, leads and cost per lead for every live Meta campaign. The analyst reads the numbers and says which campaign to fix first and why.'],
+      ['06-competitors', 'Competitors, side by side', 'Tracked competitors next to your own account: followers, posting rhythm, likes and engagement, plus the ads they are running right now.'],
+      ['10-radar', 'Content Radar', 'Official notices, Google News, Reddit, Quora, Google Trends and review sites in one feed, with a one-page PDF briefing.'],
+      ['11-geo', 'AI search visibility (GEO)', 'Real questions students ask, put to four AI assistants. It records whether the brand is named, so the team knows what to write about.'],
+    ]],
+    ['Sell and reply', [
+      ['07-crm', 'Leads and Sales Hub', 'Every DM and booking becomes a lead with an owner. Red timers show leads nobody has called, and follow-up is tracked per counsellor.'],
+      ['08-wa-inbox', 'WhatsApp Inbox', 'The team reads and replies to WhatsApp chats from the dashboard, with delivered and read ticks, so no enquiry sits unanswered on one person\'s phone.'],
+    ]],
+    ['Run the team', [
+      ['12-watchers', 'Exam-notice watchers', 'KEA, MCC and NMC pages are checked all day. A new notice arrives with a one-line AI summary, by email and on Telegram.'],
+      ['13-diagnostics', 'Self-checking diagnostics', 'Every connection is tested each morning. What can be repaired is repaired automatically; what needs a person is flagged.'],
+      ['14-claude', 'Run it from Claude', 'Connect Claude once and just ask: "put that on the board as a carousel, due Friday". It creates the task, assigns it and can schedule it.'],
+      ['15-team', 'Per-person access', 'Every page and every action is a switch per person, so a video editor sees their queue and not the ad budget.'],
+    ]],
+  ];
+  const HOW = [
+    ['Watched the team work first', 'Before writing anything, I looked at where the team lost time: <b>switching between 7 tools</b>, asking who owns a post, and <b>leads waiting on one person\'s phone</b>.'],
+    ['Wrote a plain-English spec for every feature', 'Who it is for, what it must do, and <b>what "done" looks like</b>. A clear spec is what lets an AI build the right thing the first time.'],
+    ['Designed it before building it', '<b>Mockups first, code second.</b> Each tab was drawn, shown to the team and approved before it was built, and <b>one design system</b> keeps every screen consistent.'],
+    ['Directed Claude Code, one feature at a time', 'I briefed Claude Code, <b>reviewed every change</b>, and sent it back when the result did not match the spec.'],
+    ['Tested everything on real data before release', 'Every change ran on my machine against <b>live accounts</b> first. <b>Nothing went live without my OK</b>, and I kept a daily changelog of what shipped.'],
+    ['Made it safe and cheap to run', 'I ran a <b>full security and code audit</b>, closed a data-access gap, added a <b>self-check every morning</b>, and moved background jobs to quiet hours to <b>keep hosting costs down</b>.'],
+    ['Kept improving it from the team\'s feedback', 'Teammates leave comments right inside the app. <b>Those comments became the next fixes</b>, which is how a tool became something people rely on daily.'],
+  ];
+  const ROLES = [
+    ['ph-compass', 'Product owner', 'Decided <b>what to build and in what order</b>, based on where the team lost the most time.'],
+    ['ph-pen-nib', 'UX and UI designer', 'Designed <b>every screen and flow</b>, from mockups to the final look, and kept it consistent.'],
+    ['ph-note-pencil', 'Spec writer and AI director', 'Turned each need into a <b>clear brief Claude Code could build from</b>, and judged the result.'],
+    ['ph-check-square-offset', 'QA and release manager', '<b>Tested every feature against live data</b> and approved every release.'],
+    ['ph-lightning', 'Automation builder', 'Set up the background workflows: <b>publishing, alerts, notices and daily reports</b>.'],
+    ['ph-chalkboard-teacher', 'Trainer and support', '<b>Onboarded the 5-person team</b>, set who can see what, and fixed what they reported.'],
+  ];
+  document.title = 'Marketing OS | Praveen L';
+  document.getElementById('main').innerHTML = `
+    <div class="narrow">
+      <a class="back" href="index.html" onclick="if(history.length>1&&document.referrer.includes(location.host)){history.back();return false}"><i class="ph ph-arrow-left"></i>Go back</a>
+      <h1 class="rv">Marketing OS: ${p.title}</h1>
+      <p class="sub rv" style="--d:.1s">One app where a 5-brand marketing team plans, creates, publishes, measures and sells. I owned the product: I found the problem, wrote every spec, directed Claude Code to build it, and tested each release against live data.</p>
+    </div>
+    <div class="dvid rv" style="--d:.15s"><video src="${p.video}" poster="${p.poster}" controls playsinline preload="metadata"></video></div>
+    <div class="dmeta rv"><div><span>My role</span><b>Product owner, specs, QA</b></div><div><span>Timeline</span><b>June 2026 to now</b></div><div><span>Brands</span><b>5, one app</b></div><div><span>Used by</span><b>The whole marketing team, daily</b></div></div>
+
+    <div class="dsec narrow rv"><h2>The problem</h2><p class="lead">${p.problem} Leads from ads and DMs sat in a separate sheet, WhatsApp enquiries lived on one person's phone, and nobody could see at a glance what was due, what was live, or what was working.</p>
+      <div class="repl"><span>Spreadsheets</span><span>Social scheduler</span><span>Separate CRM</span><span>Listening tool</span><span>AI-search tracker</span><span>Competitor tracker</span><span>WhatsApp on a phone</span><i class="ph ph-arrow-right"></i><b>Marketing OS</b></div></div>
+
+    <div class="dsec"><h2 class="rv">What makes it different</h2><p class="lead rv">Tools like Hootsuite, Buffer, Sprout Social and Metricool each cover a slice: mostly scheduling and analytics. This puts the whole marketing and sales day in one place.</p>
+      <div class="diff">${DIFF.map(([ic, h, t], k) => `<div class="sel rv" style="--d:${k * .06}s"><i class="ph ${ic}"></i><h3>${h}</h3><p>${t}</p></div>`).join('')}</div>
+      <p class="note rv">To be fair to competitors: Buffer and Metricool also offer Claude connectors, mainly for posting and analytics. The difference here is that Claude can work with the team's tasks and approvals too.</p></div>
+
+    <div class="dsec"><h2 class="rv">Feature by feature</h2><p class="lead rv">Fifteen parts, grouped by how the team uses them. Pictures are from the walkthrough; names, money and private details are blurred.</p>
+      ${GROUPS.map(([g, items]) => `<div class="grp"><h3 class="rv">${g}</h3>${items.map(([img, h, t, li]) => `
+        <div class="feat"><div class="fimg sel rv"><img src="${S(img)}" alt="${h}" loading="lazy"></div>
+        <div class="rv"><h4>${h}</h4><p>${t}</p>${li ? `<ul>${li.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}</div></div>`).join('')}</div>`).join('')}</div>
+
+    <div class="dsec"><h2 class="rv">By the numbers</h2><div class="dres four">${[['5', 'people on the team use it every day'], ['7', 'separate tools it replaced'], ['50', 'marketing playbooks built in'], ['22', 'actions Claude can take for the team']].map(([n, l], k) => `<div class="sel rv" style="--d:${k * .08}s"><b>${n}</b><span>${l}</span></div>`).join('')}</div></div>
+
+    <div class="dsec narrow"><h2 class="rv">How I built it</h2>
+      <p class="lead rv">I am a <b>designer who builds with AI</b>, not a full-time engineer, and I am open about that. Here is how the app went from a problem to something <b>5 people use every day</b>.</p>
+      <ol class="steps">${HOW.map(([h, t], k) => `<li class="rv" style="--d:${k * .05}s"><span>${String(k + 1).padStart(2, '0')}</span><div><h3>${h}</h3><p>${t}</p></div></li>`).join('')}</ol>
+      <p class="lead rv" style="margin-top:28px"><b>Claude Code wrote most of the code.</b> What to build, for whom, how it should look and feel, and <b>when it was good enough to ship</b> were my decisions.</p></div>
+
+    <div class="dsec"><h2 class="rv">My role</h2><p class="lead rv">On a normal team this would be several jobs. Here, I covered all of them.</p>
+      <div class="diff">${ROLES.map(([ic, h, t], k) => `<div class="sel rv" style="--d:${k * .06}s"><i class="ph ${ic}"></i><h3>${h}</h3><p>${t}</p></div>`).join('')}</div></div>`;
+  const i = PROJECTS.findIndex(x => x.id === 'marketing-os');
+  document.getElementById('next').innerHTML = projectCard(PROJECTS[(i + 1) % PROJECTS.length], (i + 1) % PROJECTS.length); wireCardVideos();
+</script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&family=Inter:wght@400;500;600;700&family=Yellowtail&family=Fragment+Mono&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<link rel="stylesheet" href="css/style.css">
+<title>Projects | Praveen L</title>
+<meta name="description" content="Automations, internal tools and landing pages built by Praveen L.">
+</head>
+<body data-page="work">
+<section class="phead">
+  <div class="wrap sec-head" style="margin-bottom:0">
+    <span class="tag" data-type="All projects"></span>
+    <h1 class="h56 rv">Projects worth exploring</h1>
+    <p class="grey rv" style="--d:.1s;max-width:520px">Systems I designed and built at GooCampus. All live, all used every day.</p>
+  </div>
+</section>
+<section class="work" style="padding-top:20px">
+  <div class="wrap"><div class="plist" id="plist"></div></div>
+</section>
+<div id="foot"></div>
+<script src="js/data.js"></script>
+<script src="js/cards.js"></script>
+<script>document.getElementById('plist').innerHTML = PROJECTS.map(projectCard).join(''); wireCardVideos();</script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
