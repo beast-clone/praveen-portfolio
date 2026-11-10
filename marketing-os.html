@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&family=Inter:wght@400;500;600;700&family=Yellowtail&family=Fragment+Mono&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=202611102134">
 <style>
   .mos .dwrap{width:min(1080px,calc(100% - 32px))}
   .mos .narrow{max-width:750px}
@@ -73,8 +73,8 @@
 </div></section>
 <div id="foot"></div>
 <div class="lightbox" id="lb"><img alt=""></div>
-<script src="js/data.js"></script>
-<script src="js/cards.js"></script>
+<script src="js/data.js?v=202611102134"></script>
+<script src="js/cards.js?v=202611102134"></script>
 <script>
   const p = PROJECTS.find(x => x.id === 'marketing-os');
   const S = n => `assets/mos/${n}.jpg`;
@@ -167,6 +167,6 @@
   document.getElementById('next').innerHTML = projectCard(PROJECTS[(i + 1) % PROJECTS.length], (i + 1) % PROJECTS.length); wireCardVideos();
 </script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=202611102134"></script>
 </body>
 </html>
