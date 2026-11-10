@@ -584,3 +584,7 @@ section{position:relative}
 .mtags{display:none;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}
 .mtags span{background:var(--tc);color:#fff;font-family:var(--head);font-weight:500;font-size:14px;letter-spacing:-.02em;padding:7px 13px;border-radius:999px}
 @media (max-width:767px){.mtags{display:flex}}
+/* footer is dark: keep contact labels readable */
+.foot .clist li span{color:rgba(255,255,255,.62)}
+.foot .clist li i{opacity:.85}
+.foot .clist li a{text-decoration-color:rgba(255,255,255,.35)}
