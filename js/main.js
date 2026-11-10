@@ -23,6 +23,7 @@
         <ul class="clist">
           <li><i class="ph ph-envelope-simple"></i><span>Alternate</span><a href="mailto:${M.email2}">${M.email2}</a></li>
           <li><i class="ph ph-phone"></i><span>Phone</span><a href="tel:${M.tel}">${M.phone}</a></li>
+          <li><i class="ph ph-file-pdf"></i><span>Resume</span><a href="assets/Praveen-L-Resume.pdf" target="_blank" rel="noopener">Download PDF (1 page)</a></li>
           <li><i class="ph ph-linkedin-logo"></i><span>LinkedIn</span><a href="${M.linkedin}" target="_blank" rel="noopener">${M.linkedinLabel}</a></li>
         </ul>
       </div>
