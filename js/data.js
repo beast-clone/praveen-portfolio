@@ -112,7 +112,7 @@ window.CAREER = [
   { n: '01', co: 'Freelance', role: 'Graphic Designer', where: 'Remote', yrs: '2018 — 2020', d: 'Posters, logos and social creatives for small businesses.', c: '#E5484D', ic: 'ph-pen-nib' },
   { n: '02', co: 'Wall of Tunes', role: 'Graphic Designer', where: 'India', yrs: '2021 — 2022', d: 'Social media and event creatives for a music brand.', c: '#3B5BDB', ic: 'ph-music-notes' },
   { n: '03', co: 'Aam Aadmi Party', role: 'Manager, campaigns', where: 'India', yrs: '2022 — 2023', d: 'Campaign creatives, and coordinating designers and writers across teams.', c: '#8427DE', ic: 'ph-megaphone' },
-  { n: '04', co: 'GooCampus', role: 'Senior UI/UX Designer, automation', where: 'Bengaluru', yrs: '2024 — Present', d: 'Started in design. Now I build the automations, internal tools and landing pages for five brands.', c: '#039754', ic: 'ph-lightning', now: true },
+  { n: '04', co: 'GooCampus', role: 'Senior Graphic Designer', where: 'Bengaluru', yrs: '2024 — Present', d: 'Started in design. Now I build the automations, internal tools and landing pages for five brands.', c: '#039754', ic: 'ph-lightning', now: true },
 ];
 
 window.EDU = [
