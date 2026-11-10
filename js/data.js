@@ -5,8 +5,8 @@ window.ME = {
   role: 'AI & Automation Specialist',
   email: 'prvnl254@gmail.com',
   email2: 'pravn.naryan@gmail.com',
-  phone: '+91 89286 97798',
-  tel: '+918928697798',
+  phone: '+91 88928 69798',
+  tel: '+918892869798',
   linkedin: 'https://www.linkedin.com/in/praveen-l-9613a0116',
   linkedinLabel: 'linkedin.com/in/praveen-l-9613a0116',
 };

@@ -11,4 +11,4 @@ What is inside:
 
 Plain HTML, CSS and JavaScript. No build step: open `index.html` or serve the folder.
 
-Contact: prvnl254@gmail.com · pravn.naryan@gmail.com · +91 89286 97798 · [LinkedIn](https://www.linkedin.com/in/praveen-l-9613a0116)
+Contact: prvnl254@gmail.com · pravn.naryan@gmail.com · +91 88928 69798 · [LinkedIn](https://www.linkedin.com/in/praveen-l-9613a0116)
