@@ -8,6 +8,7 @@ window.ME = {
   phone: '+91 88928 69798',
   tel: '+918892869798',
   linkedin: 'https://www.linkedin.com/in/praveen-l-9613a0116',
+  hello: 'mailto:prvnl254@gmail.com?subject=Saw%20Praveen.folio%2C%20let%E2%80%99s%20talk&body=Hi%20Praveen%2C%0A%0AJust%20went%20through%20your%20portfolio.%20The%20automations%20and%20Marketing%20OS%20stood%20out.%0A%0AI%E2%80%99d%20love%20to%20chat%20about%3A%0A%0AName%3A%0ACompany%3A',
   linkedinLabel: 'linkedin.com/in/praveen-l-9613a0116',
 };
 
@@ -183,3 +184,25 @@ window.LANDINGS = [
   { name: 'Apollo Fellowship', page: 'assets/pages/apollo.jpg', host: 'goocampusevents.com', url: 'https://goocampusevents.com/apollo-fellowship-programme/', line: 'Fellowship programme + registration.', intro: 'Programme page with a registration form that feeds a Google Sheet.', tags: ['Lead form', 'GA4 + Pixel'] },
   { name: 'GC Consulting', page: 'assets/pages/gc-consulting.jpg', host: 'goocampusevents.com', url: 'https://goocampusevents.com/gc-consulting/', line: '1:1 career strategy session.', intro: 'Booking page for a 1:1 career strategy session.', tags: ['GA4 + Pixel', 'Clarity'] },
 ];
+
+/* Per-project "let's talk" emails. Every project button opens a message written for THAT project.
+   Edit the wording here: [subject, the line that says what caught their eye, the label on the button]. */
+window.ASK = {
+  'Lead Engine': ['Lead Engine: every lead in 2 minutes? Let’s talk', 'Every lead reaching the right counsellor in 2 minutes is exactly the kind of system we need.', 'Request a live demo'],
+  'Marketing OS': ['I’d like the live tour of Marketing OS', 'The walkthrough was a great teaser. Now I’d like the real tour.', 'Request a live demo'],
+  'eBook Autopilot': ['eBook Autopilot: sales that deliver themselves', 'Payment to delivery with nobody touching it? That one got my attention.', 'Request a live demo'],
+  'AI Counsellor': ['Your AI Counsellor caught my eye', 'An AI that answers DMs and captures the lead on its own is something we’d love to see running.', 'Request a live demo'],
+  'WhatsApp Scheduler': ['WhatsApp Scheduler: let’s talk', 'Scheduling WhatsApp from every number, without a monthly fee? I’d like to hear how.', 'Request a live demo'],
+  'Call Summary': ['Call Summary: let’s talk', 'Every sales call summarised in 10 minutes, and 33× cheaper. I’d like to see that in action.', 'Request a live demo'],
+  'Landing Pages': ['Your landing pages caught my eye', 'The pages look sharp, and they’re wired to convert. I’d love to talk about pages like these.', 'Let’s talk about pages'],
+};
+/* Builds the mailto link. `page` = true for a single live landing page (uses its name in the message). */
+window.askMail = (name, page) => {
+  const NL = String.fromCharCode(10), e = encodeURIComponent;
+  const [subject, line] = window.ASK[name] || (page
+    ? ['Saw your ' + name + ' page', 'The ' + name + ' page caught my eye. I’d love to talk about pages like this.']
+    : ['Saw ' + name + ' on your portfolio', name + ' stood out. I’d love to see it running for real.']);
+  const close = page || name === 'Landing Pages' ? ['Name:', 'Company:', 'What we have in mind:', '', 'Talk soon.'] : ['Name:', 'Company:', 'A good time for 20 minutes:', '', 'See you on the call.'];
+  return 'mailto:' + window.ME.email + '?subject=' + e(subject) + '&body=' + e(['Hi Praveen,', '', line, ''].concat(close).join(NL));
+};
+window.askLabel = (name, page) => (window.ASK[name] && window.ASK[name][2]) || (page ? 'Ask about this page' : 'Request a live demo');

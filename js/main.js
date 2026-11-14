@@ -31,7 +31,7 @@
         <h4>Connect with me</h4>
         <div class="soc">
           <a href="${M.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
-          <a href="mailto:${M.email}?subject=Hello" aria-label="Email"><i class="ph ph-envelope-simple"></i></a>
+          <a href="${M.hello}" aria-label="Email"><i class="ph ph-envelope-simple"></i></a>
           <a href="tel:${M.tel}" aria-label="Phone"><i class="ph ph-phone"></i></a>
           <a href="https://wa.me/${M.tel.replace('+', '')}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
         </div>
@@ -46,7 +46,7 @@
     ['index.html', 'home', 'ph-house', 'Home'],
     ['about.html', 'about', 'ph-user', 'About'],
     ['projects.html', 'work', 'ph-list-bullets', 'Projects'],
-    [`mailto:${M.email}?subject=Hello`, 'mail', 'ph-envelope-simple', 'Email me'],
+    [M.hello, 'mail', 'ph-envelope-simple', 'Email me'],
   ];
   document.body.insertAdjacentHTML('beforeend', `<nav class="dock" aria-label="Main">${dock.map(([h, k, ic, t]) =>
     `<a href="${h}" class="${k === page ? 'on' : ''}" data-tip="${t}" aria-label="${t}"><i class="ph ph-bold ${ic}"></i></a>`).join('')}</nav>`);

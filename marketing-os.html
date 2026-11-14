@@ -10,21 +10,21 @@
 <meta property="og:title" content="Marketing OS | Praveen.folio">
 <meta property="og:description" content="One app where a 5-brand marketing team plans, creates, publishes, measures and sells. Watch the walkthrough.">
 <meta property="og:url" content="https://beast-clone.github.io/praveen-portfolio/marketing-os.html">
-<meta property="og:image" content="https://beast-clone.github.io/praveen-portfolio/assets/og.jpg?v=202611141656">
+<meta property="og:image" content="https://beast-clone.github.io/praveen-portfolio/assets/og.jpg?v=202611141844">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Praveen L: I build the automations, internal tools and landing pages a marketing team runs on.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Marketing OS | Praveen.folio">
 <meta name="twitter:description" content="One app where a 5-brand marketing team plans, creates, publishes, measures and sells. Watch the walkthrough.">
-<meta name="twitter:image" content="https://beast-clone.github.io/praveen-portfolio/assets/og.jpg?v=202611141656">
+<meta name="twitter:image" content="https://beast-clone.github.io/praveen-portfolio/assets/og.jpg?v=202611141844">
 <link rel="canonical" href="https://beast-clone.github.io/praveen-portfolio/marketing-os.html">
 <!-- /share preview -->
 <meta name="description" content="Marketing OS: one app where a 5-brand marketing team plans, creates, publishes, measures and sells. Specced, tested and shipped by Praveen L.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&family=Inter:wght@400;500;600;700&family=Yellowtail&family=Fragment+Mono&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
-<link rel="stylesheet" href="css/style.css?v=202611141656">
+<link rel="stylesheet" href="css/style.css?v=202611141844">
 <style>
   .mos .dwrap{width:min(1080px,calc(100% - 32px))}
   .mos .narrow{max-width:750px}
@@ -60,9 +60,6 @@
   .demostrip span{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--grey)}
   .demostrip span i{font-size:22px;color:var(--purple)}
   .demostrip b{color:var(--ink);font-weight:600}
-  .democard{--c:var(--purple);display:flex;align-items:center;justify-content:space-between;gap:28px;padding:30px 32px;flex-wrap:wrap}
-  .democard h2{font-size:30px!important}
-  .democard p{max-width:560px}
   .note{font-size:14px!important;color:var(--grey);margin-top:14px!important;max-width:640px}
   @media (max-width:860px){
     .diff{grid-template-columns:1fr}
@@ -80,13 +77,13 @@
 </div></section>
 <div id="foot"></div>
 <div class="lightbox" id="lb"><img alt=""></div>
-<script src="js/data.js?v=202611141656"></script>
-<script src="js/cards.js?v=202611141656"></script>
+<script src="js/data.js?v=202611141844"></script>
+<script src="js/cards.js?v=202611141844"></script>
 <script>
   const p = PROJECTS.find(x => x.id === 'marketing-os');
   const S = n => `assets/mos/${n}.jpg`;
   // Live demo: recruiters email to book a call; Praveen screen-shares the real app (nothing is shared or downloadable)
-  const DEMO = `mailto:${ME.email}?subject=${encodeURIComponent('Live demo request: Marketing OS')}&body=${encodeURIComponent(['Hi Praveen,', '', 'I saw Marketing OS on your portfolio and would like a live demo.', '', 'Name:', 'Company:', 'A good day and time for a 20-minute call:', '', 'Thanks!'].join(String.fromCharCode(10)))}`;
+  const DEMO = askMail('Marketing OS');
   // What makes it different (honest framing; see MARKETING_OS_FEATURES.md)
   const DIFF = [
     ['ph-users-three', 'Marketing and sales in one place', 'Most social tools stop at likes and comments. Here, the leads those posts bring in land in the same app, assigned to a counsellor and followed up.'],
@@ -179,6 +176,6 @@
   document.getElementById('next').innerHTML = projectCard(PROJECTS[(i + 1) % PROJECTS.length], (i + 1) % PROJECTS.length); wireCardVideos();
 </script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/main.js?v=202611141656"></script>
+<script src="js/main.js?v=202611141844"></script>
 </body>
 </html>

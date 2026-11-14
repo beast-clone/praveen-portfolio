@@ -17,14 +17,14 @@ window.projectCard = p => {
       </div>
       <div class="vrow">
         <div class="info">${info}</div>
-        <div class="vside">${res}${btn}</div>
+        <div class="vside">${res}<div class="btns">${btn}<a class="btn dark ask" href="${askMail(p.name)}"><i class="ph ph-chat-circle-dots"></i>${askLabel(p.name)}</a></div></div>
       </div>
     </article>
   </div>`;
   return `
   <div class="pwrap rv">
     <article class="pcard sel">
-      <div class="info">${info}${res}${btn}</div>
+      <div class="info">${info}${res}<div class="btns">${btn}<a class="btn dark ask" href="${askMail(p.name)}"><i class="ph ph-chat-circle-dots"></i>${askLabel(p.name)}</a></div></div>
       <a class="img" href="project.html?p=${p.id}" aria-label="${p.name} case study"><img src="${p.img}" alt="${p.name}" loading="lazy"></a>
     </article>
   </div>`;
@@ -78,9 +78,9 @@ window.wireShowcase = (key, items) => {
     const link = a.href ? `<a class="btn" href="${a.href}">Open project page <i class="ph ph-arrow-right"></i></a>` : a.id ? `<a class="btn" href="project.html?p=${a.id}">Read case study <i class="ph ph-arrow-right"></i></a>` : '';
     info.innerHTML = isPage ? `
       <div class="sh-l"><div class="meta"><span>${a.name}</span><b></b><span>${a.host}</span></div><h3>${a.title || a.name}</h3><p class="d">${a.intro || a.line}</p></div>
-      <div class="sh-r"><div class="atags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div><a class="btn" href="${a.url}" target="_blank" rel="noopener">Visit live page <i class="ph ph-arrow-up-right"></i></a></div>` : `
+      <div class="sh-r"><div class="atags">${(a.tags || []).map(t => `<span>${t}</span>`).join('')}</div><div class="btns"><a class="btn" href="${a.url}" target="_blank" rel="noopener">Visit live page <i class="ph ph-arrow-up-right"></i></a><a class="btn dark ask" href="${askMail(a.name, true)}"><i class="ph ph-chat-circle-dots"></i>${askLabel(a.name, true)}</a></div></div>` : `
       <div class="sh-l"><div class="meta"><span>${a.name}</span><b></b><span>${a.label}</span></div><h3>${a.title}</h3><p class="d">${a.intro}</p></div>
-      <div class="sh-r"><div class="res">${a.stats.map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join('')}</div>${link}</div>`;
+      <div class="sh-r"><div class="res">${a.stats.map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join('')}</div><div class="btns">${link}<a class="btn dark ask" href="${askMail(a.name)}"><i class="ph ph-chat-circle-dots"></i>${askLabel(a.name)}</a></div></div>`;
     info.classList.add('in');
     if (play) { const list = rail[i].parentElement; // scroll only the list, never the page
       if (innerWidth < 768) list.scrollTo({ left: rail[i].offsetLeft - 16, behavior: 'smooth' });

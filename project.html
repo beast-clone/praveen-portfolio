@@ -10,20 +10,20 @@
 <meta property="og:title" content="Case study | Praveen.folio">
 <meta property="og:description" content="A project by Praveen L: what the problem was, what I built and what changed.">
 <meta property="og:url" content="https://beast-clone.github.io/praveen-portfolio/project.html">
-<meta property="og:image" content="https://beast-clone.github.io/praveen-portfolio/assets/og.jpg?v=202611141656">
+<meta property="og:image" content="https://beast-clone.github.io/praveen-portfolio/assets/og.jpg?v=202611141844">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Praveen L: I build the automations, internal tools and landing pages a marketing team runs on.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Case study | Praveen.folio">
 <meta name="twitter:description" content="A project by Praveen L: what the problem was, what I built and what changed.">
-<meta name="twitter:image" content="https://beast-clone.github.io/praveen-portfolio/assets/og.jpg?v=202611141656">
+<meta name="twitter:image" content="https://beast-clone.github.io/praveen-portfolio/assets/og.jpg?v=202611141844">
 <link rel="canonical" href="https://beast-clone.github.io/praveen-portfolio/project.html">
 <!-- /share preview -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500&family=Inter:wght@400;500;600;700&family=Yellowtail&family=Fragment+Mono&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
-<link rel="stylesheet" href="css/style.css?v=202611141656">
+<link rel="stylesheet" href="css/style.css?v=202611141844">
 </head>
 <body data-page="work">
 <main class="detail"><div class="dwrap" id="main"></div></main>
@@ -33,8 +33,8 @@
 </div></section>
 <div id="foot"></div>
 <div class="lightbox" id="lb"><img alt=""></div>
-<script src="js/data.js?v=202611141656"></script>
-<script src="js/cards.js?v=202611141656"></script>
+<script src="js/data.js?v=202611141844"></script>
+<script src="js/cards.js?v=202611141844"></script>
 <script>
   const id = new URLSearchParams(location.search).get('p');
   const i = Math.max(0, PROJECTS.findIndex(x => x.id === id));
@@ -49,6 +49,7 @@
     <div class="dsec rv"><h2>The problem</h2><p>${p.problem}</p></div>
     <div class="dsec"><h2 class="rv">What I built</h2><ol class="built">${p.built.map(b => `<li class="rv">${b}</li>`).join('')}</ol></div>
     <div class="dsec"><h2 class="rv">The result</h2><div class="dres">${p.results.map(([n, l], k) => `<div class="sel rv" style="--d:${k * .08}s"><b>${n}</b><span>${l}</span></div>`).join('')}</div></div>
+    <div class="dsec"><div class="democard sel rv"><div><h2>${p.id === 'landing-pages' ? 'Want pages like these?' : 'See it working, live'}</h2><p>${p.id === 'landing-pages' ? 'Happy to walk you through how these pages are built, tracked and wired to the CRM.' : 'It runs for a real team with real data, so it is not public. Book a 20-minute call and I will show you the real thing and answer anything you want to ask.'}</p></div><a class="btn dark" href="${askMail(p.name)}">${askLabel(p.name)} <i class="ph ph-arrow-right"></i></a></div></div>
     <div class="dsec rv"><h2>My role</h2><p>${p.role}</p></div>
     ${p.id === 'landing-pages' && window.LANDINGS ? `<div class="dsec"><h2 class="rv">All live pages</h2><p class="rv">Click any page to open the live site. Hover to scroll through it.</p>
       <div class="lpg">${LANDINGS.map((l, k) => `<a class="lp sel rv" style="--d:${(k % 3) * .06}s" href="${l.url}" target="_blank" rel="noopener"><span class="im"><img src="${l.page}" alt="${l.name}" loading="lazy"></span><span class="tx"><b>${l.name}</b><small>${l.line}</small><em>${l.host} <i class="ph ph-arrow-up-right"></i></em></span></a>`).join('')}</div></div>` :
@@ -57,6 +58,6 @@
   document.getElementById('next').innerHTML = projectCard(PROJECTS[(i + 1) % PROJECTS.length], (i + 1) % PROJECTS.length); wireCardVideos();
 </script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/main.js?v=202611141656"></script>
+<script src="js/main.js?v=202611141844"></script>
 </body>
 </html>
